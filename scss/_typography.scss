@@ -1,0 +1,29 @@
+@font-face {
+    font-family: 'thaisans';
+    src: url('fonts/ThaiSansNeue-Black.otf');
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'thaisans';
+    src: url('fonts/ThaiSansNeue-Regular.otf');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'thaisans';
+    src: url('fonts/ThaiSansNeue-Light.otf');
+    font-weight: lighter;
+    font-style: normal;
+}
+
+.thai {
+  font-family: 'thaisans', sans-serif;
+}
+.thai.bold {
+  font-weight: bold;
+}
+.thai.light {
+    font-weight: lighter;
+}
