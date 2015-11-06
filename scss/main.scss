@@ -294,7 +294,7 @@ body {
         content: attr(english);
         font-size: 55px;
         font-weight: 100;
-        color: rgba(0,0,0,0.1);
+        color: lighten($gold, 30%);
         margin: -30px;
         line-height: 1;
       }
