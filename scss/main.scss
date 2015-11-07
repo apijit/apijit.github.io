@@ -106,10 +106,6 @@ body {
     &.open {
       .logo {
         transform: translate3d(0,0,0) scale(0.55);
-
-        &.animate {
-          animation: none;
-        }
       }
       .circular-nav {
         transform: translateX(-50%) scale(1);
@@ -127,13 +123,8 @@ body {
       left: 50%;
       margin-left: -180px;
       z-index: 20;
-      transition: all 0.3s;
+      transition: all 0.5s;
       user-select: none;
-
-      &.animate {
-        animation: pulse 1.5s linear infinite;
-        animation-delay: 2s;
-      }
     }
 
     .description {
@@ -144,7 +135,6 @@ body {
       opacity: 0;
       transform: translate3d(0, 20px, 0);
       transition: transform 1s, opacity 1s;
-      transition-delay: 1s;
 
       &.show {
         opacity: 1;
@@ -164,7 +154,7 @@ body {
       position: absolute;
       left: 50%;
       transform: translateX(-50%) scale(0.1);
-      transition: transform 0.3s, opacity 0.3s;
+      transition: transform 0.5s 0.3s, opacity 0.5s 0.3s;
       top: 150px;
       border: 1px solid $dark-gold;
       user-select: none;

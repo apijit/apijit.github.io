@@ -174,22 +174,13 @@
           console.log('end transition');
           var elem = document.getElementById('apijit-description');
           elem.className = elem.className + ' show'
-          var logo = document.getElementById('logo');
-          logo.className = logo.className + ' animate'
+          var banner = document.getElementById('banner');
+          setTimeout(function () {
+            banner.className = banner.className + ' open';
+          }, 1000);
           done = true;
         }
       }
-
-      var logo = document.getElementById('logo');
-      element.addEventListener('click', function () {
-        var banner = document.getElementById('banner');
-        if (banner.className.indexOf(' open') === -1) {
-          banner.className = banner.className + ' open';
-        }
-        else {
-          banner.className = banner.className.slice(0, banner.className.indexOf(' open'));
-        }
-      }, false);
 
       if (document.images) {
         cover = new Image();
