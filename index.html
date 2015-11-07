@@ -58,7 +58,7 @@
   </div>
   <section class="question">
     <div class="container">
-      <h1 class="text-center thai light">หากคุณต้องการที่จะพัฒนาด้านเหล่านี้...</h1>
+      <h1 class="text-center thai light">หากคุณต้องการที่จะพัฒนาศักยภาพต่อไปนี้...</h1>
     </div>
   </section>
   <section class="component" id="wisdom">
@@ -68,7 +68,7 @@
           <div class="title thai bold" english="wisdom">ปัญญา</div>
         </div>
         <div class="col-sm-8">
-          <div class="description thai">มีความฉเลียวฉลาด เรียนรู้ได้ดี รู้จักคิด คิดเป็น</div>
+          <div class="description thai">มีความฉเลียวฉลาด เรียนรู้ได้ดี รู้จักคิดหลายด้าน</div>
         </div>
       </div>
     </div>
@@ -104,7 +104,7 @@
           <div class="title thai bold" english="discipline">วินัย</div>
         </div>
         <div class="col-sm-8">
-          <div class="description thai">มีความสามารถควบคุมจิตตนเอง บังคับตนเองให้เป็นที่ต้องการได้</div>
+          <div class="description thai">มีความสามารถควบคุมจิตตนเอง บังคับตนเองให้เป็นอย่างที่ต้องการได้</div>
         </div>
       </div>
     </div>
@@ -137,7 +137,7 @@
     <div class="container text-center">
       <h1 class="thai">คุณพร้อมจะเปลี่ยนชีวิตคุณหรือยัง?</h1>
       <button class="thai light">ติดต่อสั่งซื้อหนังสือ</button>
-      <button class="thai light alt">เรียนรู้เพิ่มเติม</button>
+      <button class="thai light alt">ลองทำแบบทดสอบ</button>
     </div>
   </section>
   <footer id="contact" class="footer">
@@ -190,6 +190,12 @@
           banner.className = banner.className.slice(0, banner.className.indexOf(' open'));
         }
       }, false);
+
+      if (document.images) {
+        cover = new Image();
+
+        cover.src = "http://www.apijitsupersoul.com/img/peakfiltered-min.jpg";
+      }
     })();
   </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
