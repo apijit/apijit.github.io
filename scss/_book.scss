@@ -7,6 +7,7 @@ $sideWidth: $bookWidth * 0.13;
     padding-top: 100px;
     padding-bottom: 100px;
     display: block;
+    background: lighten($gold, 40%);
 
     .book-description {
       h1 {
@@ -273,16 +274,17 @@ $sideWidth: $bookWidth * 0.13;
       }
     }
   }
-  section {
-    &:nth-child(even) {
-      background: lighten($gold, 30%);
+
+  .method, .order {
+    background: $dark-gold;
+    padding: 20px 0 30px;
+    margin-bottom: 20px;
+    h1 {
+      color: white;
     }
   }
-  .method, .order {
-    padding-top: 20px;
-    height: 200px;
-    h1 {
-      color: $dark-gold;
-    }
+
+  .component {
+    background: white;
   }
 }
