@@ -310,19 +310,15 @@ body {
       margin-bottom: 50px;
     }
 
-    button {
-      border-radius: 31px;
-
-      &+button {
-        margin-left: 20px;
-      }
+    button + button {
+      margin-left: 20px;
     }
 
     @media screen and (max-width: 767px) {
       button {
         width: 100%;
 
-        &+button {
+        & + button {
           margin: 20px 0;
         }
       }
@@ -375,6 +371,7 @@ button {
   font-size: 30px;
   padding: 10px 30px;
   transition: background 0.3s;
+  border-radius: 31px;
 
   &:hover {
     background: $dark-gold;
@@ -389,5 +386,10 @@ button {
       background: $gold;
       color: white;
     }
+  }
+
+  &.button-small {
+    font-size: 24px;
+    padding: 3px 20px;
   }
 }

@@ -2,152 +2,287 @@ $bookWidth: 250px;
 $bookHeight: $bookWidth * 3 / 2;
 $sideWidth: $bookWidth * 0.13;
 
-.book-showcase {
-  padding-top: 100px;
-  padding-bottom: 50px;
-  display: block;
-  background: lighten($gold, 30%);
+.book-page {
+  .book-showcase {
+    padding-top: 100px;
+    padding-bottom: 100px;
+    display: block;
 
-  h1 {
-    color: $dark-gold;
-    font-weight: bold;
-    font-size: 3.25em;
-  }
-  .description {
-    font-size: 1.8em;
-    color: $dark-gold;
-  }
-  .apijit-book {
-    position: relative;
-    width: $bookWidth;
-    height: $bookHeight;
-    z-index: 1;
-    margin: 0 auto;
-    perspective: 1800px;
-  }
-
-  @media screen and (max-width: 767px) {
-    .col-sm-6 + .col-sm-6 {
-      margin-top: 50px;
-    }
-    .col-sm-6 {
-      padding: 0 30px;
-      h1, p {
-        max-width: 500px;
-        margin: 0 auto;
-      }
+    .book-description {
       h1 {
+        color: $dark-gold;
+        font-weight: bold;
+        font-size: 3.25em;
         margin-bottom: 20px;
       }
-    }
-  }
 
-  .book {
-    position: absolute;
-    width: 100%;
-    height: $bookHeight;
-    transform-style: preserve-3d;
-    transition: transform 0.5s;
-    cursor: pointer;
+      p {
+        font-size: 1.8em;
+        color: $dark-gold;
+        margin-bottom: 15px;
 
-    &:hover {
-      transform: rotateY(40deg);
-    }
-
-    &.flip {
-      transform: rotateY(180deg);
-    }
-
-    > div {
-      display: block;
-      position: absolute;
-    }
-
-    .bk-front {
-      width: $bookWidth;
-      height: $bookHeight;
-      transform-style: preserve-3d;
-      transform-origin: 0% 50%;
-      transition: transform 0.5s;
-      transform: translate3d(0,0, $sideWidth / 2);
-      z-index: 10;
-
-      > div {
-        z-index: 1;
-        display: block;
-        position: absolute;
-        border-radius: 0 3px 3px 0;
-        box-shadow: inset 4px 0 10px rgba(0, 0, 0, 0.1);
-        backface-visibility: hidden;
-        transform-style: preserve-3d;
-        background-color: #B3861E;
-        width: $bookWidth;
-        height: $bookHeight;
+        &:last-of-type {
+          margin-bottom: 30px;
+        }
       }
 
-      .bk-cover {
-        background-image: url(/img/book_cover_front.jpg);
+      @media screen and (max-width: 767px) {
+        h1, p {
+          max-width: 500px;
+          margin: 0 auto;
+        }
+
+        .button-group {
+          text-align: center;
+        }
+      }
+
+      button + button {
+        margin-left: 20px;
+      }
+    }
+
+    .apijit-book {
+      position: relative;
+      width: $bookWidth;
+      height: $bookHeight;
+      z-index: 1;
+      margin: 0 auto;
+      perspective: 1800px;
+    }
+
+    @media screen and (max-width: 767px) {
+      .col-sm-6 + .col-sm-6 {
+        margin-top: 50px;
+      }
+      .col-sm-6 {
+        padding: 0 30px;
+      }
+    }
+
+    .book {
+      position: absolute;
+      width: 100%;
+      height: $bookHeight;
+      transform-style: preserve-3d;
+      transition: transform 0.5s;
+
+      &:hover {
+        transform: rotateY(40deg);
+      }
+
+      &.flip {
+        transform: rotateY(180deg);
+      }
+
+      &.open {
+        transform: translate3d(80px,0,0) scale(1.1);
+
+        @media screen and (max-width: 991px) {
+          transform: scale(1.1);
+        }
+
+        @media screen and (max-width: 767px) {
+          transform: translate3d(10%,0,0) scale(1.1);
+        }
+
+        .bk-front {
+          transform: translate3d(0,0,13px) rotate3d(0,1,0,-160deg);
+        }
+      }
+
+      > div {
+        display: block;
+        position: absolute;
+      }
+
+      .bk-front {
+        width: $bookWidth;
+        height: $bookHeight;
+        transform-style: preserve-3d;
+        transform-origin: 0% 50%;
+        transition: transform 0.5s;
+        transform: translate3d(0,0, $sideWidth / 2 - 1px);
+        z-index: 10;
+        cursor: pointer;
+
+        > div {
+          z-index: 1;
+          display: block;
+          position: absolute;
+          border-radius: 0 3px 3px 0;
+          box-shadow: inset 4px 0 10px rgba(0, 0, 0, 0.1);
+          backface-visibility: hidden;
+          transform-style: preserve-3d;
+          background-color: #B3861E;
+          width: $bookWidth;
+          height: $bookHeight;
+        }
+
+        .bk-cover-back {
+          transform: rotate3d(0,1,0,-179deg);
+        }
+
+        .bk-cover {
+          background-image: url(/img/book_cover_front.jpg);
+          background-repeat: no-repeat;
+          background-size: 100%;
+
+          &:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 10px;
+            bottom: 0;
+            width: 3px;
+            background: rgba(0,0,0,0.06);
+            box-shadow: 1px 0 3px rgba(255, 255, 255, 0.1);
+          }
+        }
+      }
+
+      .bk-page {
+        width: $bookWidth - 5px;
+        height: $bookHeight - 10px;
+        transform: translate3d(0,0,12px);
+        backface-visibility: hidden;
+        z-index: 9;
+        background: white;
+        top: 5px;
+
+        .bk-content {
+          position: absolute;
+          top: 0;
+          left: 0;
+          bottom: 0;
+          right: 0;
+          padding: 20px;
+          overflow: hidden;
+          background: #fff;
+          color: #333;
+          opacity: 0;
+          backface-visibility: hidden;
+          transition: opacity 0.3s;
+
+          &[page="1"] {
+            .bk-prev {
+              display: none;
+            }
+          }
+
+          &[page="5"] {
+            .bk-next {
+              display: none;
+            }
+          }
+
+          nav {
+            display: block;
+            margin-top: 20px;
+            text-align: center;
+            position: relative;
+            z-index: 100;
+
+            span {
+              display: inline-block;
+              text-align: center;
+              width: 20px;
+              height: 20px;
+              color: #aaa;
+              background: #f0f0f0;
+              border-radius: 50%;
+              font-size: 16px;
+              line-height: 20px;
+              cursor: pointer;
+
+              &:hover, &:active {
+                background: #666;
+                color: white;
+              }
+
+              & + span {
+                margin-left: 5px;
+              }
+            }
+          }
+
+          &.bk-content-current {
+            opacity: 1;
+          }
+
+          ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+
+            li {
+              font-size: 14px;
+            }
+          }
+
+          h1 {
+            font-size: 20px;
+            text-align: center;
+            margin: 0 0 10px;
+          }
+        }
+      }
+
+      .bk-back {
+        width: $bookWidth;
+        height: $bookHeight;
+        transform: rotate3d(0,1,0,-180deg) translate3d(0,0, $sideWidth / 2);
+        box-shadow: 10px 10px 30px rgba(0,0,0,0.3);
+        border-radius: 3px 0 0 3px;
+        background-image: url(/img/book_cover_back.jpg);
         background-repeat: no-repeat;
         background-size: 100%;
+        cursor: pointer;
 
         &:after {
           content: '';
           position: absolute;
           top: 0;
-          left: 10px;
+          left: auto;
+          right: 10px;
           bottom: 0;
           width: 3px;
           background: rgba(0,0,0,0.06);
           box-shadow: 1px 0 3px rgba(255, 255, 255, 0.1);
         }
       }
-    }
 
-    .bk-back {
-      width: $bookWidth;
-      height: $bookHeight;
-      transform: rotate3d(0,1,0,-180deg) translate3d(0,0, $sideWidth / 2);
-      box-shadow: 10px 10px 30px rgba(0,0,0,0.3);
-      border-radius: 3px 0 0 3px;
-      background-image: url(/img/book_cover_back.jpg);
-      background-repeat: no-repeat;
-      background-size: 100%;
+      .bk-right {
+        background: linear-gradient(90deg, #ccc, #fff);
+        top: 5px;
+        height: $bookHeight - 10px;
+        transform: rotate3d(0,1,0,90deg) translate3d(0,0, $bookWidth - 3px);
+        backface-visibility: hidden;
+        width: $sideWidth;
+        left: -$sideWidth / 2;
+      }
 
-      &:after {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: auto;
-        right: 10px;
-        bottom: 0;
-        width: 3px;
-        background: rgba(0,0,0,0.06);
-        box-shadow: 1px 0 3px rgba(255, 255, 255, 0.1);
+      .bk-left {
+        background-image: url(/img/book_cover_side.jpg);
+        background-size: 100%;
+        height: $bookHeight;
+        transform: rotate3d(0,1,0,-90deg);
+        backface-visibility: hidden;
+        width: $sideWidth;
+        left: -$sideWidth / 2;
       }
     }
-
-    .bk-right {
-      background: linear-gradient(90deg, #ccc, #fff);
-      top: 5px;
-      height: $bookHeight - 10px;
-      transform: rotate3d(0,1,0,90deg) translate3d(0,0, $bookWidth - 3px);
-      backface-visibility: hidden;
-      width: $sideWidth;
-      left: -$sideWidth / 2;
-    }
-
-    .bk-left {
-      background-image: url(/img/book_cover_side.jpg);
-      background-size: 100%;
-      height: $bookHeight;
-      transform: rotate3d(0,1,0,-90deg);
-      backface-visibility: hidden;
-      width: $sideWidth;
-      left: -$sideWidth / 2;
+  }
+  section {
+    &:nth-child(even) {
+      background: lighten($gold, 30%);
     }
   }
-}
-
-.description {
-  height: 200px;
+  .method, .order {
+    padding-top: 20px;
+    height: 200px;
+    h1 {
+      color: $dark-gold;
+    }
+  }
 }
