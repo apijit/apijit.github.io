@@ -1,9 +1,6 @@
+@import "variables";
 @import "typography";
-
-$light-gold: #FEC441;
-$gold: #DFB53C;
-$dark-gold: #CB9F27;
-$theme: #E6A727;
+@import "book";
 
 @keyframes pulse {
   0% { transform: scale(1); }

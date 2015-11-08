@@ -1,0 +1,153 @@
+$bookWidth: 250px;
+$bookHeight: $bookWidth * 3 / 2;
+$sideWidth: $bookWidth * 0.13;
+
+.book-showcase {
+  padding-top: 100px;
+  padding-bottom: 50px;
+  display: block;
+  background: lighten($gold, 30%);
+
+  h1 {
+    color: $dark-gold;
+    font-weight: bold;
+    font-size: 3.25em;
+  }
+  .description {
+    font-size: 1.8em;
+    color: $dark-gold;
+  }
+  .apijit-book {
+    position: relative;
+    width: $bookWidth;
+    height: $bookHeight;
+    z-index: 1;
+    margin: 0 auto;
+    perspective: 1800px;
+  }
+
+  @media screen and (max-width: 767px) {
+    .col-sm-6 + .col-sm-6 {
+      margin-top: 50px;
+    }
+    .col-sm-6 {
+      padding: 0 30px;
+      h1, p {
+        max-width: 500px;
+        margin: 0 auto;
+      }
+      h1 {
+        margin-bottom: 20px;
+      }
+    }
+  }
+
+  .book {
+    position: absolute;
+    width: 100%;
+    height: $bookHeight;
+    transform-style: preserve-3d;
+    transition: transform 0.5s;
+    cursor: pointer;
+
+    &:hover {
+      transform: rotateY(40deg);
+    }
+
+    &.flip {
+      transform: rotateY(180deg);
+    }
+
+    > div {
+      display: block;
+      position: absolute;
+    }
+
+    .bk-front {
+      width: $bookWidth;
+      height: $bookHeight;
+      transform-style: preserve-3d;
+      transform-origin: 0% 50%;
+      transition: transform 0.5s;
+      transform: translate3d(0,0, $sideWidth / 2);
+      z-index: 10;
+
+      > div {
+        z-index: 1;
+        display: block;
+        position: absolute;
+        border-radius: 0 3px 3px 0;
+        box-shadow: inset 4px 0 10px rgba(0, 0, 0, 0.1);
+        backface-visibility: hidden;
+        transform-style: preserve-3d;
+        background-color: #B3861E;
+        width: $bookWidth;
+        height: $bookHeight;
+      }
+
+      .bk-cover {
+        background-image: url(/img/book_cover_front.jpg);
+        background-repeat: no-repeat;
+        background-size: 100%;
+
+        &:after {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 10px;
+          bottom: 0;
+          width: 3px;
+          background: rgba(0,0,0,0.06);
+          box-shadow: 1px 0 3px rgba(255, 255, 255, 0.1);
+        }
+      }
+    }
+
+    .bk-back {
+      width: $bookWidth;
+      height: $bookHeight;
+      transform: rotate3d(0,1,0,-180deg) translate3d(0,0, $sideWidth / 2);
+      box-shadow: 10px 10px 30px rgba(0,0,0,0.3);
+      border-radius: 3px 0 0 3px;
+      background-image: url(/img/book_cover_back.jpg);
+      background-repeat: no-repeat;
+      background-size: 100%;
+
+      &:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: auto;
+        right: 10px;
+        bottom: 0;
+        width: 3px;
+        background: rgba(0,0,0,0.06);
+        box-shadow: 1px 0 3px rgba(255, 255, 255, 0.1);
+      }
+    }
+
+    .bk-right {
+      background: linear-gradient(90deg, #ccc, #fff);
+      top: 5px;
+      height: $bookHeight - 10px;
+      transform: rotate3d(0,1,0,90deg) translate3d(0,0, $bookWidth - 3px);
+      backface-visibility: hidden;
+      width: $sideWidth;
+      left: -$sideWidth / 2;
+    }
+
+    .bk-left {
+      background-image: url(/img/book_cover_side.jpg);
+      background-size: 100%;
+      height: $bookHeight;
+      transform: rotate3d(0,1,0,-90deg);
+      backface-visibility: hidden;
+      width: $sideWidth;
+      left: -$sideWidth / 2;
+    }
+  }
+}
+
+.description {
+  height: 200px;
+}
