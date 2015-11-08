@@ -322,6 +322,8 @@
 
   $('#view-content').click(function() {
     $('.book').toggleClass('open').removeClass('flip');
+    $('.bk-content').removeClass('bk-content-current');
+    $('[page=1]').addClass('bk-content-current');
   });
 
   $('.bk-prev').click(function() {
