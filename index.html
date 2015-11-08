@@ -24,7 +24,7 @@
       </div>
       <div class="collapse navbar-collapse" id="menu">
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="/" class="text-uppercase">Home</a></li>
+          <li><a href="#banner" class="text-uppercase">Home</a></li>
           <li><a href="/book.html" class="text-uppercase">Book</a></li>
           <li><a href="#" class="text-uppercase">Test</a></li>
           <li><a href="#" class="text-uppercase">Workshop</a></li>
@@ -135,8 +135,8 @@
   <section class="call-to-action">
     <div class="container text-center">
       <h1 class="thai">คุณพร้อมจะเปลี่ยนชีวิตคุณหรือยัง?</h1>
-      <a class="button thai light" href="/book.html#order">ติดต่อสั่งซื้อหนังสือ</a>
-      <a class="button thai light alt" href="/book.html">เรียนรู้เพิ่มเติม</a>
+      <a class="button thai light buy" href="/book.html#order">ติดต่อสั่งซื้อหนังสือ</a>
+      <a class="button thai light alt learn-more" href="/book.html">เรียนรู้เพิ่มเติม</a>
     </div>
   </section>
   <footer id="contact" class="footer">
@@ -145,12 +145,12 @@
         <div class="col-sm-6">
           <h1 class="thai">อภิจิต SuperSoul</h1>
           <p class="thai">การอบรมเพื่อการพัฒนาจิต เพื่อความเป็นเลิศทะลุขีดจำกัด</p>
-          <p class="thai">อำนวยการโดย <a href="https://www.facebook.com/dr.sinchai.chaojaroenrat">ดร.ศิลป์ชัย</a> และคณะ</p>
+          <p class="thai">อำนวยการโดย <a class="sinchai" href="https://www.facebook.com/dr.sinchai.chaojaroenrat">ดร.ศิลป์ชัย</a> และคณะ</p>
         </div>
         <div class="col-sm-6">
           <h1 class="thai">Contact</h1>
-          <p class="thai">Facebook: <a href="www.facebook.com/Apijit.SuperSoul">www.facebook.com/Apijit.SuperSoul</a></p>
-          <p class="thai">Email: <a href="mailto:contact@apijitsupersoul.com">contact@apijitsupersoul.com</a></p>
+          <p class="thai">Facebook: <a href="http://www.facebook.com/Apijit.SuperSoul" class="social">www.facebook.com/Apijit.SuperSoul</a></p>
+          <p class="thai">Email: <a href="mailto:contact@apijitsupersoul.com" class="email">contact@apijitsupersoul.com</a></p>
         </div>
       </div>
     </div>
@@ -158,6 +158,8 @@
 
   <script src="js/drawfillsvg.min.js"></script>
   <script src="js/smoothscroll.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
   <script>
     (function() {
       var done = false;
@@ -186,10 +188,25 @@
 
         cover.src = "http://www.apijitsupersoul.com/img/peakfiltered-min.jpg";
       }
+
+      $('.buy').click(function () {
+        ga('send', 'event', 'Home: Buy Book', 'click', 'Home Page');
+      });
+      $('.learn-more').click(function () {
+        ga('send', 'event', 'Home: Learn More', 'click', 'Home Page');
+      });
+      $('.social').click(function () {
+        ga('send', 'event', 'Home: Facebook', 'click', 'Home Page');
+      });
+      $('.email').click(function () {
+        ga('send', 'event', 'Home: Email', 'click', 'Home Page');
+      });
+      $('.sinchai').click(function () {
+        ga('send', 'event', 'Home: Sinchai facebook', 'click', 'Home Page');
+      });
+
     })();
   </script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

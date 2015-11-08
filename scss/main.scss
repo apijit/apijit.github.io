@@ -323,11 +323,11 @@ body {
       margin-left: 20px;
     }
 
-    @media screen and (max-width: 767px) {
-      button {
+    @media screen and (max-width: 500px) {
+      .button {
         width: 100%;
 
-        & + button {
+        & + .button {
           margin: 20px 0;
         }
       }
@@ -382,6 +382,7 @@ button, .button {
   transition: background 0.3s;
   border-radius: 31px;
   text-decoration: none;
+  display: inline-block;
 
   &:hover {
     color: white;

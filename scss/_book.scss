@@ -41,6 +41,15 @@ $sideWidth: $bookWidth * 0.13;
       #view-content {
         margin-left: 20px;
       }
+
+      @media screen and (max-width: 500px) {
+        button, .button {
+          width: 100%;
+        }
+        #view-content {
+          margin: 20px 0;
+        }
+      }
     }
 
     .apijit-book {
