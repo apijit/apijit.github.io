@@ -17,6 +17,15 @@
 body {
   background: white;
 
+  a {
+    color: $gold;
+    text-decoration: underline;
+
+    &:hover {
+      color: $dark-gold;
+    }
+  }
+
   p {
     line-height: 1;
   }
@@ -60,6 +69,7 @@ body {
       height: auto;
       transition: color 0.3s;
       margin-top: 5px;
+      text-decoration: none;
 
       &:hover, &:active, &:focus {
         color: $dark-gold;
@@ -81,6 +91,7 @@ body {
         height: 50px;
         margin: 0;
         transition: color 0.3s, background 0.3s;
+        text-decoration: none;
 
         &:hover, &:active, &:focus {
           color: $dark-gold;
@@ -146,7 +157,7 @@ body {
       overflow: hidden;
       z-index: 10;
       border-radius: 50%;
-      background: lighten($theme, 8%);
+      background: lighten($theme, 5%);
       opacity: 0.01;
       position: absolute;
       left: 50%;
@@ -219,7 +230,7 @@ body {
         }
 
         &:nth-child(odd) {
-          background: lighten($theme, 12%);
+          background: lighten($theme, 10%);
         }
       }
     }
@@ -308,7 +319,7 @@ body {
       margin-bottom: 50px;
     }
 
-    button + button {
+    .button + .button {
       margin-left: 20px;
     }
 
@@ -361,7 +372,7 @@ body {
   }
 }
 
-button {
+button, .button {
   background: $gold;
   font-weight: 100;
   border: 0;
@@ -370,9 +381,12 @@ button {
   padding: 10px 30px;
   transition: background 0.3s;
   border-radius: 31px;
+  text-decoration: none;
 
   &:hover {
+    color: white;
     background: $dark-gold;
+    text-decoration: none;
   }
 
   &.alt {
