@@ -1,0 +1,81 @@
+.test-page {
+  .test-heading {
+    padding-top: 60px;
+    padding-bottom: 20px;
+    background: $gold;
+
+    h1 {
+      font-size: 40px;
+      color: white;
+    }
+  }
+  .test-form {
+    padding: 40px 0 80px;
+    background: lighten($dark-gold, 50%);
+
+    button {
+      border-radius: 0;
+    }
+
+    .progress {
+      height: 2px;
+      border-radius: 0;
+
+      .progress-bar {
+        background-color: lighten($gold, 10%);
+        box-shadow: none;
+      }
+    }
+
+    .questions, .score, .progress {
+      max-width: 800px;
+      margin: 0 auto;
+
+      h1 {
+        color: $gold;
+        margin-top: 30px;
+        margin-bottom: 20px;
+      }
+
+      label {
+        display: block;
+        padding: 5px 20px;
+        background: white;
+        color: $gold;
+        font-size: 30px;
+        font-weight: normal;
+        cursor: pointer;
+        border: 1px solid $gold;
+
+        &:hover {
+          background: $gold;
+          color: white;
+        }
+
+        &.selected {
+          background: $gold;
+          color: white;
+        }
+
+        input {
+          display: none;
+        }
+      }
+
+      .next {
+        margin: 15px 0;
+      }
+    }
+
+    .progress {
+      margin-bottom: 20px;
+    }
+
+    .score {
+      p {
+        font-size: 20px;
+        color: $gold;
+      }
+    }
+  }
+}

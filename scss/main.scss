@@ -1,6 +1,7 @@
 @import "variables";
 @import "typography";
 @import "book";
+@import "test";
 
 @keyframes pulse {
   0% { transform: scale(1); }
@@ -383,6 +384,10 @@ button, .button {
   border-radius: 31px;
   text-decoration: none;
   display: inline-block;
+
+  &.full-width {
+    width: 100%;
+  }
 
   &:hover {
     color: white;
