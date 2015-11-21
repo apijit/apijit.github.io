@@ -34,7 +34,11 @@ angular.module('app', ['chart.js', 'firebase'])
         $scope.currentQuestion = 0;
         $scope.completed = false;
         $scope.finished = false;
-        $scope.questions = Question;
+        $scope.questions = shuffleArray(Question);
+        $scope.questions.forEach(function (question) {
+            question.answers = shuffleArray(question.answers);
+            return question;
+        });
         $scope.progress = {
             width: (($scope.currentQuestion + 1) / $scope.questions.length * 100) + '%'
         };
@@ -110,6 +114,23 @@ angular.module('app', ['chart.js', 'firebase'])
                 sum += score[i];
             }
             return sum;
+        }
+
+        function shuffleArray(array) {
+          var m = array.length, t, i;
+
+          // While there remain elements to shuffle
+          while (m) {
+            // Pick a remaining element…
+            i = Math.floor(Math.random() * m--);
+
+            // And swap it with the current element.
+            t = array[m];
+            array[m] = array[i];
+            array[i] = t;
+          }
+
+          return array;
         }
 
         function evaluation(totalScore) {
@@ -1248,7 +1269,7 @@ angular.module('app', ['chart.js', 'firebase'])
                 text: 'ไม่เคยคิด เสียเวลา',
                 value: 0
             }, {
-                text: 'ชอบทำสิ่งที่ค้นเคย',
+                text: 'ชอบทำสิ่งที่คุ้นเคย',
                 value: 0.25
             }, {
                 text: 'ก็มีบ้างแต่น้อย',
