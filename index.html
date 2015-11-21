@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta property="og:site_name" content="อภิจิต SuperSoul"/>
   <meta property="og:url" content="http://www.apijitsupersoul.com" />
-  <title>Apijit SuperSoul</title>
+  <title>อภิจิต SuperSoul</title>
   <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous"> -->
   <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="main.css">
@@ -139,6 +139,7 @@
       <h1 class="thai">คุณพร้อมจะเปลี่ยนชีวิตคุณหรือยัง?</h1>
       <a class="button thai light buy" href="/book.html#order">ติดต่อสั่งซื้อหนังสือ</a>
       <a class="button thai light alt learn-more" href="/book.html">เรียนรู้เพิ่มเติม</a>
+      <a class="button thai light alt do-test" href="/test.html">ลองทดสอบจิต</a>
     </div>
   </section>
   <footer id="contact" class="footer">
@@ -147,7 +148,7 @@
         <div class="col-sm-6">
           <h1 class="thai">อภิจิต SuperSoul</h1>
           <p class="thai">การอบรมเพื่อการพัฒนาจิต เพื่อความเป็นเลิศทะลุขีดจำกัด</p>
-          <p class="thai">อำนวยการโดย <a class="sinchai" href="https://www.facebook.com/dr.sinchai.chaojaroenrat">ดร.ศิลป์ชัย</a> และคณะ</p>
+          <p class="thai">อำนวยการโดย <a class="sinchai" href="https://www.facebook.com/dr.sinchai.chaojaroenrat">ดร.ศิลป์ชัย เชาว์เจริญรัตน์</a> และคณะ</p>
         </div>
         <div class="col-sm-6">
           <h1 class="thai">Contact</h1>
@@ -199,6 +200,9 @@
       $('.learn-more').click(function () {
         ga('send', 'event', 'Home: Learn More', 'click', 'Home Page');
       });
+      $('.do-test').click(function () {
+        ga('send', 'event', 'Home: Do Test', 'click', 'Home Page');
+      });
       $('.social').click(function () {
         ga('send', 'event', 'Home: Facebook', 'click', 'Home Page');
       });
@@ -208,7 +212,6 @@
       $('.sinchai').click(function () {
         ga('send', 'event', 'Home: Sinchai facebook', 'click', 'Home Page');
       });
-
     })();
   </script>
   <script>

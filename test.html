@@ -4,16 +4,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <title>Apijit SuperSoul | Test</title>
+  <title>อภิจิต SuperSoul | แบบทดสอบ</title>
   <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous"> -->
   <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="main.css">
-  <script src="js/jquery.min.js"></script>
-  <script src="js/angular.min.js"></script>
-  <script src="js/test.js"></script>
+  <link rel="stylesheet" href="angular-chart.min.css">
 </head>
 
-<body class="test-page" id="test-page">
+<body class="test-page" id="test-page" ng-controller="testCtrl">
   <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
       <div class="navbar-header">
@@ -29,7 +27,7 @@
         <ul class="nav navbar-nav navbar-right">
           <li><a href="/" class="text-uppercase">Home</a></li>
           <li><a href="/book.html" class="text-uppercase">Book</a></li>
-          <li><a href="#test-page" class="text-uppercase">Test</a></li>
+          <li><a href="/test.html" class="text-uppercase">Test</a></li>
           <li><a href="#" class="text-uppercase">Workshop</a></li>
           <li><a href="#contact" class="text-uppercase">Contact</a></li>
         </ul>
@@ -40,23 +38,51 @@
     <div class="container text-center">
       <h1 class="thai">แบบทดสอบอภิจิต</h1>
     </div>
+    <div class="text-center" ng-hide="testStarted">
+      <p class="thai">จิตมนุษย์เราแต่ละคนมีประสิทธิภาพไม่เท่ากัน ลองทำแบบทดสอบอภิจิต SuperSoul ดูว่า จิตของคุณมีประสิทธิภาพเพียงใด</p>
+      <button class="thai alt" ng-click="startTest()">เริ่มต้นแบบทดสอบ</button>
+    </div>
   </section>
-  <section class="test-form" ng-controller="testCtrl">
+  <section class="test-form" ng-show="testStarted">
     <div class="container">
-      <div class="progress" ng-hide="finished">
+      <div class="score" ng-show="finished">
+        <h1 class="thai text-center">ผลทดสอบ</h1>
+        <h2 class="thai bold">{{evaluation.type}}</h2>
+        <p class="thai">{{evaluation.description}}</p>
+        <canvas id="radar" class="chart chart-radar"
+          chart-data="chartData" chart-labels="labels" chart-colours="chartColor">
+        </canvas>
+        <a href="book.html" class="button thai" >สนใจเรียนรู้เพิ่มเติม</a>
+      </div>
+      <div class="progress" ng-hide="finished || completed">
         <div class="progress-bar" role="progressbar" valuemin="0" valuemax="100" ng-style="progress"></div>
       </div>
-      <div class="score" ng-show="finished">
-        <h1 class="thai">ผลทดสอบ</h1>
-        <p>คุณได้คะแนน: {{sum(score)}}</p>
-      </div>
-      <div class="questions">
+      <div class="questions" ng-hide="finished || completed">
         <h1 class="thai">{{questions[currentQuestion].question}}</h1>
-        <label ng-repeat="answer in questions[currentQuestion].answers" class="thai" ng-class="{ selected: currentAnswer.answer === $index }">
-          <input type="radio" ng-model="currentAnswer.answer" ng-value="answer.value">
+        <button ng-repeat="answer in questions[currentQuestion].answers" class="thai full-width alt" ng-click="submitQuestion(answer.value)">
           {{answer.text}}
-        </label>
-        <button class="next full-width thai" ng-click="nextQuestion(currentAnswer.answer)">ข้อต่อไป</button>
+        </button>
+      </div>
+      <div class="subscribe" ng-show="completed">
+        <form name="userForm" ng-submit="submitInfo(userForm.$valid)" novalidate>
+          <h1 class="thai">กรุณาใส่ข้อมูลต่อไปนี้เพื่อรับผลทดสอบ</h1>
+          <div class="form-group">
+            <label class="thai" for="name">ชื่อ</label>
+            <input type="text" ng-model="name" name="name" required>
+            <p ng-show="userForm.name.$invalid && !userForm.name.$pristine" class="help-block thai">* โปรดระบุชื่อของคุณ</p>
+          </div>
+          <div class="form-group">
+            <label class="thai" for="age">อายุ</label>
+            <input type="number" ng-model="age" name="age" required>
+            <p ng-show="userForm.age.$invalid && !userForm.age.$pristine" class="help-block thai">* โปรดระบุอายุของคุณ</p>
+          </div>
+          <div class="form-group">
+            <label class="thai" for="email">อีเมล (optional)</label>
+            <input type="email" ng-model="email" name="email">
+            <p ng-show="userForm.email.$invalid && !userForm.email.$pristine" class="help-block thai">* โปรดใส่อีเมลที่ถูกต้อง</p>
+          </div>
+          <button type="submit" class="button thai full-width complete-test" ng-disabled="userForm.$invalid">รับผลทดสอบ</button>
+        </form>
       </div>
     </div>
   </section>
@@ -66,7 +92,7 @@
         <div class="col-sm-6">
           <h1 class="thai">อภิจิต SuperSoul</h1>
           <p class="thai">การอบรมเพื่อการพัฒนาจิต เพื่อความเป็นเลิศทะลุขีดจำกัด</p>
-          <p class="thai">อำนวยการโดย <a href="https://www.facebook.com/dr.sinchai.chaojaroenrat" class="sinchai">ดร.ศิลป์ชัย</a> และคณะ</p>
+          <p class="thai">อำนวยการโดย <a href="https://www.facebook.com/dr.sinchai.chaojaroenrat" class="sinchai">ดร.ศิลป์ชัย เชาว์เจริญรัตน์</a> และคณะ</p>
         </div>
         <div class="col-sm-6">
           <h1 class="thai">Contact</h1>
@@ -77,37 +103,38 @@
     </div>
   </footer>
   <script src="js/modernizr.js"></script>
+  <script src="js/jquery.min.js"></script>
   <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-  <!-- // <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script> -->
-  <!-- // <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script> -->
+  <script src="js/angular.min.js"></script>
+  <script src="https://cdn.firebase.com/js/client/2.3.2/firebase.js"></script>
+  <script src="https://cdn.firebase.com/libs/angularfire/1.1.3/angularfire.min.js"></script>
+  <script src="js/Chart.min.js"></script>
+  <script src="js/angular-chart.min.js"></script>
+  <script src="js/test.js"></script>
   <script src="js/smoothscroll.min.js"></script>
   <script>
   $('.social').click(function () {
-    ga('send', 'event', 'Book: Facebook', 'click', 'Home Page');
+    ga('send', 'event', 'Book: Facebook', 'click', 'Test Page');
   });
   $('.email').click(function () {
-    ga('send', 'event', 'Book: Email', 'click', 'Home Page');
+    ga('send', 'event', 'Book: Email', 'click', 'Test Page');
   });
   $('.sinchai').click(function () {
-    ga('send', 'event', 'Book: Sinchai facebook', 'click', 'Home Page');
+    ga('send', 'event', 'Book: Sinchai facebook', 'click', 'Test Page');
+  });
+  $('.complete-test').click(function () {
+    ga('send', 'event', 'Test Completed', 'click', 'Test Page');
   });
   </script>
-  <!--<script>
-  (function(i, s, o, g, r, a, m) {
-    i['GoogleAnalyticsObject'] = r;
-    i[r] = i[r] || function() {
-      (i[r].q = i[r].q || []).push(arguments)
-    }, i[r].l = 1 * new Date();
-    a = s.createElement(o),
-      m = s.getElementsByTagName(o)[0];
-    a.async = 1;
-    a.src = g;
-    m.parentNode.insertBefore(a, m)
-  })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-  ga('create', 'UA-69812069-1', 'auto');
-  ga('send', 'pageview');
-  </script>-->
+    ga('create', 'UA-69812069-1', 'auto');
+    ga('send', 'pageview');
+  </script>
 </body>
 
 </html>

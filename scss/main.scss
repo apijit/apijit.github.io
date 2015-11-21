@@ -312,7 +312,7 @@ body {
 
   .call-to-action {
     padding: 80px 0 100px;
-    background: rgba(230,167,39, 0.1);
+    background: white;
 
     h1 {
       color: $gold;
@@ -320,8 +320,13 @@ body {
       margin-bottom: 50px;
     }
 
+    .button {
+      user-select: none;
+    }
+
     .button + .button {
       margin-left: 20px;
+      margin-bottom: 20px;
     }
 
     @media screen and (max-width: 500px) {
@@ -329,7 +334,7 @@ body {
         width: 100%;
 
         & + .button {
-          margin: 20px 0;
+          margin: 20px 0 0;
         }
       }
     }
@@ -353,11 +358,16 @@ body {
 
     a {
       color: white;
-      text-decoration: none;
       padding: 0 5px;
+      text-decoration: none;
       transition: all 0.3s;
 
       &:hover {
+        background: white;
+        color: $gold;
+      }
+
+      &.sinchai {
         background: white;
         color: $gold;
       }

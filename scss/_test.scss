@@ -2,20 +2,37 @@
   .test-heading {
     padding-top: 60px;
     padding-bottom: 20px;
-    background: $gold;
+    background: $gold url(/img/grid-pattern-gold.svg);
 
     h1 {
-      font-size: 40px;
+      font-size: 48px;
       color: white;
     }
+
+    p {
+      margin-top: 20px;
+      color: white;
+      font-size: 30px;
+      max-width: 700px;
+      margin: 0 auto 20px;
+      padding: 20px;
+    }
+
+    button {
+      transition: background 0.3s;
+      &:hover {
+        background: $dark-gold;
+        color: white;
+      }
+      margin-bottom: 100px;
+    }
+  }
+  #radar {
+    font-family: 'thaisans';
   }
   .test-form {
     padding: 40px 0 80px;
     background: lighten($dark-gold, 50%);
-
-    button {
-      border-radius: 0;
-    }
 
     .progress {
       height: 2px;
@@ -30,6 +47,7 @@
     .questions, .score, .progress {
       max-width: 800px;
       margin: 0 auto;
+      user-select: none;
 
       h1 {
         color: $gold;
@@ -37,33 +55,14 @@
         margin-bottom: 20px;
       }
 
-      label {
-        display: block;
-        padding: 5px 20px;
-        background: white;
-        color: $gold;
-        font-size: 30px;
-        font-weight: normal;
-        cursor: pointer;
-        border: 1px solid $gold;
-
-        &:hover {
-          background: $gold;
-          color: white;
-        }
-
-        &.selected {
-          background: $gold;
-          color: white;
-        }
-
-        input {
-          display: none;
-        }
+      button.alt {
+        margin-bottom: 10px;
+        padding: 7px 15px;
+        transition: none;
       }
 
       .next {
-        margin: 15px 0;
+        margin: 30px 0 0;
       }
     }
 
@@ -72,9 +71,71 @@
     }
 
     .score {
+      text-align: center;
+      h1 {
+        color: $dark-gold;
+        font-size: 50px;
+        margin-top: 0;
+      }
+      h2 {
+        font-size: 40px;
+        color: $dark-gold;
+      }
       p {
-        font-size: 20px;
+        font-size: 28px;
         color: $gold;
+        margin-bottom: 50px;
+      }
+      a {
+        margin-top: 40px;
+      }
+    }
+  }
+
+  .subscribe {
+    max-width: 400px;
+    margin: 0 auto;
+
+    h1 {
+      text-align: center;
+      color: $gold;
+      margin-bottom: 30px;
+    }
+
+    .form-group {
+      text-align: center;
+      margin-bottom: 20px;
+
+      label {
+        display: inline-block;
+        font-size: 24px;
+        color: $gold;
+        font-weight: normal;
+        width: 100px;
+        vertical-align: middle;
+        line-height: 1;
+      }
+
+      input {
+        border: 1px solid $gold;
+        padding: 5px 10px;
+        color: $dark-gold;
+      }
+
+      p {
+        color: red;
+      }
+
+      .help-block {
+        font-size: 16px;
+      }
+    }
+
+    button {
+      margin-top: 30px;
+
+      &[disabled] {
+        background: #ccc;
       }
     }
   }
