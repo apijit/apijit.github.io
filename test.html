@@ -11,6 +11,7 @@
   <!-- Facebook Open Graph -->
   <meta property="og:title" content="แบบทดสอบอภิจิต SuperSoul" />
   <meta property="og:site_name" content="อภิจิต SuperSoul"/>
+  <meta property="og:type" content="fbapijit:test">
   <meta property="og:url" content="http://www.apijitsupersoul.com/test.html" />
   <meta property="og:description" content="จิตมนุษย์เราแต่ละคนมีประสิทธิภาพไม่เท่ากัน ลองทำแบบทดสอบอภิจิต SuperSoul ดูว่า จิตของคุณมีประสิทธิภาพเพียงใด" />
   <meta property="fb:app_id" content="522940864521909" />
@@ -76,6 +77,7 @@
           chart-data="chartData" chart-labels="labels" chart-colours="chartColor">
         </canvas>
         <a href="book.html" class="button thai learn-more" >สนใจเรียนรู้เพิ่มเติม</a>
+        <button class="thai alt share" ng-click="share()">แชร์ผลใน Facebook</button>
       </div>
       <div class="progress" ng-hide="finished || completed">
         <div class="progress-bar" role="progressbar" valuemin="0" valuemax="100" ng-style="progress"></div>
