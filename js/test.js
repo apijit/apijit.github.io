@@ -69,7 +69,7 @@ angular.module('app', ['chart.js', 'firebase', 'updateMeta'])
             $window.FB.api(
                 'me/fbapijit:do',
                 'post', {
-                    object: {
+                    test: {
                         'og:url': 'http://www.apijitsupersoul.com/test.html',
                         'og:title': 'Testing',
                         'og:type': 'fbapijit:test',
