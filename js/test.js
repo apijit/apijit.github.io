@@ -52,24 +52,11 @@ angular.module('app', ['chart.js', 'firebase', 'updateMeta'])
         };
 
         $scope.share = function () {
-            // $window.FB.ui({
-            //     method: 'share_open_graph',
-            //     action_type: 'do',
-            //     action_properties: JSON.stringify({
-            //         object: {
-            //             'og:url': 'http://www.apijitsupersoul.com/test.html',
-            //             'og:title': 'Testing',
-            //             'og:type': 'fbapijit:test',
-            //             'og:image': 'https://fbstatic-a.akamaihd.net/images/devsite/attachment_blank.png',
-            //             'og:description': 'blahblahblah',
-            //             'fb:app_id': '522940864521909'
-            //         }
-            //     })
-            // }, function (response) {});
-            $window.FB.api(
-                'me/fbapijit:do',
-                'post', {
-                    test: {
+            $window.FB.ui({
+                method: 'share_open_graph',
+                action_type: 'fbapijit:do',
+                action_properties: JSON.stringify({
+                    'test': {
                         'og:url': 'http://www.apijitsupersoul.com/test.html',
                         'og:title': 'Testing',
                         'og:type': 'fbapijit:test',
@@ -77,12 +64,8 @@ angular.module('app', ['chart.js', 'firebase', 'updateMeta'])
                         'og:description': 'blahblahblah',
                         'fb:app_id': '522940864521909'
                     }
-                },
-
-                function (response) {
-                    console.log(response);
-                }
-            );
+                })
+            }, function (response) {});
         };
 
         $scope.startTest = function () {
