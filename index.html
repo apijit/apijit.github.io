@@ -9,6 +9,12 @@
   <title>อภิจิต SuperSoul</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
   <link rel="stylesheet" href="main.css">
+  <meta property="og:title" content="อภิจิต SuperSoul" />
+  <meta property="og:site_name" content="อภิจิต SuperSoul"/>
+  <meta property="og:url" content="http://www.apijitsupersoul.com" />
+  <meta property="og:description" content="พัฒนาศักยภาพจิต เพื่อให้ทะลุขีดจำกัดและครบบริบูรณ์" />
+  <meta property="fb:app_id" content="522940864521909" />
+  <meta property="og:image" content="http://apijitsupersoul.com/img/homepage.jpg" />
 </head>
 
 <body>
@@ -173,7 +179,6 @@
 
       function showDescription() {
         if (!done) {
-          console.log('end transition');
           var elem = document.getElementById('apijit-description');
           elem.className = elem.className + ' show'
           var banner = document.getElementById('banner');
@@ -183,6 +188,10 @@
           done = true;
         }
       }
+
+      $('#apijit-logo').click(function () {
+        $('#banner').toggleClass('open');
+      });
 
       if (document.images) {
         cover = new Image();
