@@ -1,4 +1,4 @@
-angular.module('app', ['chart.js', 'firebase'])
+angular.module('app', ['chart.js', 'firebase', 'updateMeta'])
     .config(['ChartJsProvider', function (ChartJsProvider) {
         // Configure all charts
         ChartJsProvider.setOptions({
@@ -109,6 +109,7 @@ angular.module('app', ['chart.js', 'firebase'])
                     data.email = $scope.email;
                 }
                 testerRef.push(data);
+                $scope.ogtitle = $scope.evaluation.type;
                 $scope.completed = false;
                 $scope.finished = true;
             } else {
