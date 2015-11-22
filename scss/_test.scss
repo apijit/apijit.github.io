@@ -97,6 +97,22 @@
       a {
         margin-top: 40px;
       }
+      button.share {
+        margin-left: 10px;
+        padding: 7px 20px;
+        background: #435F9C;
+        color: white;
+        border: 0;
+      }
+      @media screen and (max-width: 450px) {
+        a, button {
+          display: block;
+          width: 100%;
+        }
+        button.share {
+          margin: 20px 0;
+        }
+      }
     }
   }
 

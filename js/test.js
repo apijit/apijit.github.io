@@ -62,19 +62,20 @@ angular.module('app', ['chart.js', 'firebase'])
                 action_properties: JSON.stringify({
                     'test': {
                         'og:url': 'http://www.apijitsupersoul.com/test.html',
-                        'og:title': 'คุณมี' + $scope.evaluation.type,
+                        'og:title': 'คุณมี ' + $scope.evaluation.type,
                         'og:type': 'fbapijit:test',
-                        'og:image': 'http://www.apijitsupersoul.com/img/result/abnormal_soul.png',
+                        'og:image': 'http://www.apijitsupersoul.com/img/result/' + $scope.evaluation.image,
                         'og:description': $scope.evaluation.description,
                         'fb:app_id': '522940864521909'
                     }
                 })
-            }, function (response) {});
+            }, function (response) {
+                console.log(response);
+            });
         };
 
         $scope.startTest = function () {
             $scope.testStarted = true;
-            console.log('test Start');
         };
 
         $scope.submitQuestion = function (answer) {
@@ -161,30 +162,39 @@ angular.module('app', ['chart.js', 'firebase'])
             if (totalScore <= 35) {
                 result.type = '“อปกติจิต” (Abnormal Soul)';
                 result.description = 'คุณมีภาวะจิตที่เริ่มผิดปกติ ยากที่จะดำเนินชีวิตอย่างปกติสุขและมีประสิทธิภาพ ปรับตัวยาก พัฒนาตัวยาก ทั้งมีความเสี่ยงที่จะมีอาการรุนแรงขึ้น จึงควรรีบพัฒนาโดยด่วน หรือปรึกษาแพทย์';
+                result.image = 'abnormal_soul.png';
             } else if (totalScore <= 50) {
                 result.type = '“ปกติจิตระดับต่ำ” (Inferior Normal Soul)';
                 result.description = 'คุณสามารถดำเนินชีวิตดูแลตัวเองได้ แต่ไม่ค่อยมีประสิทธิภาพมากนัก ควรมีการพัฒนาเพื่อให้มีประสิทธิภาพสูงขึ้นอีก';
+                result.image = 'inferior_normal_soul.png';
             } else if (totalScore <= 60) {
                 result.type = '“ปกติจิตระดับกลาง” (Average Normal Soul)';
                 result.description = 'คุณมีภาวะปกติจิต สามารถดำเนินชีวิตอย่างมีประสิทธิภาพได้ อย่างไรก็ตามคุณยังมีความสุขและมีประสิทธิภาพได้มากขึ้นอีก หากมีการพัฒนาอย่างต่อเนื่อง';
+                result.image = 'average_normal_soul.png';
             } else if (totalScore <= 70) {
                 result.type = '“ปกติจิตระดับบน” (Superior Normal Soul)';
                 result.description = 'คุณมีภาวะปกติจิตและยังมีโอกาสก้าวสู่ระดับอภิจิต คุณมีความสามารถและมีสุขภาพจิตที่ดี แต่คุณยังมีโอกาสพัฒนาไปได้ไกลกว่านี้อีก หากมีวิธีพัฒนาที่ดี';
+                result.image = 'superior_normal_soul.png';
             } else if (totalScore <= 80) {
                 result.type = '“อภิจิตระดับพื้นฐาน” (Basic SuperSoul)';
                 result.description = 'คุณอยู่ในขั้นเริ่มต้นของการมีภาวะอภิจิต ในการเป็นคนที่เก่ง ดี มีความสุข ดีทั้งสติปัญญาและอารมณ์ ยังมีโอกาสไปได้ไกลกว่านี้อีกมาก หากมีวิธีพัฒนาที่ดี';
+                result.image = 'basic_supersoul.png';
             } else if (totalScore <= 85) {
                 result.type = '“อภิจิตระดับก้าวหน้า” (Advanced SuperSoul)';
                 result.description = 'คุณมีภาวะอภิจิตที่เก่งคิดฉลาดทำ เป็นคนดี มีความสุข มีพลัง มีเป้าหมายชีวิต และมุ่งมั่นสูง จนเห็นได้ชัด';
+                result.image = 'advanced_supersoul.png';
             } else if (totalScore <= 90) {
                 result.type = '“อภิจิตระดับสูง” (Superior SuperSoul)';
                 result.description = 'คุณมีภาวะอภิจิตที่เก่งคิดฉลาดทำ เป็นคนดี มีความสุข มีพลัง มีเป้าหมายชีวิต เห็นได้ชัดว่ามีความมุ่งมั่นสูง อดทนเป็นเลิศ แรงจูงใจใฝ่สัมฤทธิ์แรงชัดมาก ไม่ยอมพ่ายแพ้ต่ออุปสรรค มีความเป็นผู้นำสูง มีอิทธิพลต่อชีวิตคนรอบข้าง';
+                result.image = 'superior_supersoul.png';
             } else if (totalScore <= 95) {
                 result.type = '“อภิจิตระดับพิเศษ” (Special SuperSoul)';
                 result.description = 'คุณเป็นบุคคลที่หาได้ยาก สร้างสรรค์สิ่งใหม่ มีความมุ่งมั่นสูง ความเป็นผู้นำความโดดเด่นเพิ่มมากขึ้นอีก เป้าหมายชีวิตสูงมาก และบากบั่นอย่างหนักเพื่อความสัมฤทธิ์ผล ไม่ยอมพ่ายแพ้แก่อุปสรรคใดๆ';
+                result.image = 'special_supersoul.png';
             } else if (totalScore <= 100) {
                 result.type = '“อภิจิตระดับเหนือมิติ” (Transcendant SuperSoul)';
                 result.description = 'คุณเป็นบุคคลที่หาได้ยากยิ่ง ที่ทำให้คนธรรมดาๆ คนหนึ่งกลายเป็นยอดคน มีสภาวะ SuperSoul ที่ทำให้กลายเป็น Superman มีจิตใจอันยิ่งใหญ่กว่าคนทั่วไปมาก ทำสิ่งที่เหลือเชื่อได้สำเร็จอย่างอัศจรรย์ สามารถพลิกวิกฤตได้ ช่วยเหลือผู้อื่นได้มากมาย เป็นผู้นำที่มีอิทธิพลทางจิตใจต่อคนอื่นๆ มากมาย ผู้คนให้ความรักและศรัทธาอย่างยิ่ง เป็นคนที่แม้วันที่จากไปแล้วก็ยังจะเป็นแรงบันดาลใจให้ผู้คน';
+                result.image = 'transcendant_supersoul.png';
             }
             return result;
         }

@@ -65,19 +65,19 @@
     <div class="text-center" ng-hide="testStarted">
       <p class="thai light">จิตมนุษย์เราแต่ละคนมีประสิทธิภาพไม่เท่ากัน ลองทำแบบทดสอบอภิจิต SuperSoul ดูว่า จิตของคุณมีประสิทธิภาพเพียงใด</p>
       <button class="thai alt start-test" ng-click="startTest()">เริ่มต้นแบบทดสอบ</button>
-      <button class="thai alt" ng-click="share()">Share</button>
     </div>
   </section>
   <section class="test-form" ng-show="testStarted" ng-cloak>
     <div class="container">
-      <div class="score" ng-show="finished">
-        <!-- <h1 class="thai text-center">ผลทดสอบ</h1> -->
+      <div class="score">
+        <h1 class="thai text-center">ผลทดสอบ</h1>
         <h2 class="thai bold">{{evaluation.type}}</h2>
         <p class="thai">{{evaluation.description}}</p>
         <canvas id="radar" class="chart chart-radar"
           chart-data="chartData" chart-labels="labels" chart-colours="chartColor">
         </canvas>
         <a href="book.html" class="button thai learn-more" >สนใจเรียนรู้เพิ่มเติม</a>
+        <button class="thai alt share" ng-click="share()">แชร์ผลใน Facebook</button>
       </div>
       <div class="progress" ng-hide="finished || completed">
         <div class="progress-bar" role="progressbar" valuemin="0" valuemax="100" ng-style="progress"></div>
