@@ -54,7 +54,7 @@ angular.module('app', ['chart.js', 'firebase', 'updateMeta'])
         $scope.share = function () {
             $window.FB.ui({
                 method: 'share_open_graph',
-                action_type: 'fbapijit.do',
+                action_type: 'fbapijit:do',
                 action_properties: JSON.stringify({
                     object: {
                         'og:url': 'http://www.apijitsupersoul.com/test.html',
