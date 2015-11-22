@@ -20,7 +20,6 @@ angular.module('app', ['chart.js', 'firebase', 'updateMeta'])
     .controller('testCtrl', ['$scope', 'Question', '$window', function ($scope, Question, $window) {
         var ref = new Firebase('https://intense-torch-1321.firebaseio.com/');
         var testerRef = ref.child('apijit-test');
-        $scope.ogtitle = '“อภิจิตระดับสูง” (Superior SuperSoul)';
         $scope.testStarted = false;
         $scope.test = 'SPI (Soul Performance Indicator) Test';
         $scope.score = {
@@ -54,11 +53,19 @@ angular.module('app', ['chart.js', 'firebase', 'updateMeta'])
 
         $scope.share = function () {
             $window.FB.ui({
-                method: 'share',
-                href: 'http://www.apijitsupersoul.com/test.html',
-            }, function (response) {
-                console.log(response);
-            });
+                method: 'share_open_graph',
+                action_type: 'do',
+                action_properties: JSON.stringify({
+                    object: {
+                        'og:url': 'http://www.apijitsupersoul.com/test.html',
+                        'og:title': 'Testing',
+                        'og:type': 'fbapijit:test',
+                        'og:image': 'https://fbstatic-a.akamaihd.net/images/devsite/attachment_blank.png',
+                        'og:description': 'blahblahblah',
+                        'fb:app_id': '522940864521909'
+                    }
+                })
+            }, function (response) {});
         };
 
         $scope.startTest = function () {
