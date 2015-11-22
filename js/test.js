@@ -17,7 +17,7 @@ angular.module('app', ['chart.js', 'firebase'])
             pointLabelFontColor: '#DFB53C'
         });
     }])
-    .controller('testCtrl', ['$scope', 'Question', function ($scope, Question) {
+    .controller('testCtrl', ['$scope', 'Question', '$window', function ($scope, Question, $window) {
         var ref = new Firebase('https://intense-torch-1321.firebaseio.com/');
         var testerRef = ref.child('apijit-test');
 
@@ -50,6 +50,15 @@ angular.module('app', ['chart.js', 'firebase'])
             'discipline': 0,
             'influence': 0,
             'purpose': 0
+        };
+
+        $scope.share = function () {
+            $window.FB.ui({
+                method: 'share',
+                href: 'http://www.apijitsupersoul.com/test.html',
+            }, function (response) {
+                console.log(response);
+            });
         };
 
         $scope.startTest = function () {
@@ -102,8 +111,7 @@ angular.module('app', ['chart.js', 'firebase'])
                 testerRef.push(data);
                 $scope.completed = false;
                 $scope.finished = true;
-            }
-            else {
+            } else {
                 $scope.errorMessage = 'กรุณาใส่ข้อมูลให้ครบ';
             }
         }
@@ -117,20 +125,21 @@ angular.module('app', ['chart.js', 'firebase'])
         }
 
         function shuffleArray(array) {
-          var m = array.length, t, i;
+            var m = array.length,
+                t, i;
 
-          // While there remain elements to shuffle
-          while (m) {
-            // Pick a remaining element…
-            i = Math.floor(Math.random() * m--);
+            // While there remain elements to shuffle
+            while (m) {
+                // Pick a remaining element…
+                i = Math.floor(Math.random() * m--);
 
-            // And swap it with the current element.
-            t = array[m];
-            array[m] = array[i];
-            array[i] = t;
-          }
+                // And swap it with the current element.
+                t = array[m];
+                array[m] = array[i];
+                array[i] = t;
+            }
 
-          return array;
+            return array;
         }
 
         function evaluation(totalScore) {
