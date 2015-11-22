@@ -20,7 +20,7 @@ angular.module('app', ['chart.js', 'firebase', 'updateMeta'])
     .controller('testCtrl', ['$scope', 'Question', '$window', function ($scope, Question, $window) {
         var ref = new Firebase('https://intense-torch-1321.firebaseio.com/');
         var testerRef = ref.child('apijit-test');
-
+        $scope.ogtitle = '“อภิจิตระดับสูง” (Superior SuperSoul)';
         $scope.testStarted = false;
         $scope.test = 'SPI (Soul Performance Indicator) Test';
         $scope.score = {
