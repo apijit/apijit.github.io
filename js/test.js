@@ -1,4 +1,4 @@
-angular.module('app', ['chart.js', 'firebase', 'updateMeta'])
+angular.module('app', ['chart.js', 'firebase'])
     .config(['ChartJsProvider', function (ChartJsProvider) {
         // Configure all charts
         ChartJsProvider.setOptions({
@@ -30,6 +30,10 @@ angular.module('app', ['chart.js', 'firebase', 'updateMeta'])
             'influence': [],
             'purpose': []
         };
+        $scope.evaluation = {
+            type: '“อปกติจิต” (Abnormal Soul)',
+            description: 'คุณมีภาวะจิตที่เริ่มผิดปกติ ยากที่จะดำเนินชีวิตอย่างปกติสุขและมีประสิทธิภาพ ปรับตัวยาก พัฒนาตัวยาก ทั้งมีความเสี่ยงที่จะมีอาการรุนแรงขึ้น จึงควรรีบพัฒนาโดยด่วน หรือปรึกษาแพทย์'
+        }
         $scope.currentQuestion = 0;
         $scope.completed = false;
         $scope.finished = false;
@@ -58,10 +62,10 @@ angular.module('app', ['chart.js', 'firebase', 'updateMeta'])
                 action_properties: JSON.stringify({
                     'test': {
                         'og:url': 'http://www.apijitsupersoul.com/test.html',
-                        'og:title': 'Testing',
+                        'og:title': 'คุณมี' + $scope.evaluation.type,
                         'og:type': 'fbapijit:test',
-                        'og:image': 'https://fbstatic-a.akamaihd.net/images/devsite/attachment_blank.png',
-                        'og:description': 'blahblahblah',
+                        'og:image': 'http://www.apijitsupersoul.com/img/result/abnormal_soul.png',
+                        'og:description': $scope.evaluation.description,
                         'fb:app_id': '522940864521909'
                     }
                 })
@@ -116,7 +120,6 @@ angular.module('app', ['chart.js', 'firebase', 'updateMeta'])
                     data.email = $scope.email;
                 }
                 testerRef.push(data);
-                $scope.ogtitle = $scope.evaluation.type;
                 $scope.completed = false;
                 $scope.finished = true;
             } else {
@@ -165,7 +168,7 @@ angular.module('app', ['chart.js', 'firebase', 'updateMeta'])
                 result.type = '“ปกติจิตระดับกลาง” (Average Normal Soul)';
                 result.description = 'คุณมีภาวะปกติจิต สามารถดำเนินชีวิตอย่างมีประสิทธิภาพได้ อย่างไรก็ตามคุณยังมีความสุขและมีประสิทธิภาพได้มากขึ้นอีก หากมีการพัฒนาอย่างต่อเนื่อง';
             } else if (totalScore <= 70) {
-                result.type = '“ปกติจิตระดับสูง” (Superior Normal Soul)';
+                result.type = '“ปกติจิตระดับบน” (Superior Normal Soul)';
                 result.description = 'คุณมีภาวะปกติจิตและยังมีโอกาสก้าวสู่ระดับอภิจิต คุณมีความสามารถและมีสุขภาพจิตที่ดี แต่คุณยังมีโอกาสพัฒนาไปได้ไกลกว่านี้อีก หากมีวิธีพัฒนาที่ดี';
             } else if (totalScore <= 80) {
                 result.type = '“อภิจิตระดับพื้นฐาน” (Basic SuperSoul)';
