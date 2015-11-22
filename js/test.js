@@ -69,7 +69,14 @@ angular.module('app', ['chart.js', 'firebase', 'updateMeta'])
             $window.FB.api(
                 'me/fbapijit:do',
                 'post', {
-                    test: '"http://www.apijitsupersoul.com/test.html"'
+                    object: {
+                        'og:url': 'http://www.apijitsupersoul.com/test.html',
+                        'og:title': 'Testing',
+                        'og:type': 'fbapijit:test',
+                        'og:image': 'https://fbstatic-a.akamaihd.net/images/devsite/attachment_blank.png',
+                        'og:description': 'blahblahblah',
+                        'fb:app_id': '522940864521909'
+                    }
                 },
 
                 function (response) {
