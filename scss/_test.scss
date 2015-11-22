@@ -1,6 +1,6 @@
 .test-page {
   .test-heading {
-    padding: 100px 0;
+    padding: 70px 0 30px;
     background: $gold url(/img/grid-pattern-gold.svg);
 
     h1 {
@@ -24,7 +24,15 @@
         background: $dark-gold;
         color: white;
       }
-      margin-bottom: 0;
+      margin-bottom: 60px;
+    }
+
+    @media screen and (max-width: 768px) {
+      padding: 60px 0 20px;
+
+      button {
+        margin-bottom: 40px;
+      }
     }
   }
   #radar {
