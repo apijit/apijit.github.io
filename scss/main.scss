@@ -265,7 +265,7 @@ body {
       }
     }
 
-    &:nth-child(2n-1) {
+    &:nth-child(2n) {
       background: white;
     }
 
@@ -312,7 +312,7 @@ body {
 
   .call-to-action {
     padding: 80px 0 100px;
-    background: white;
+    background: rgba(230,167,39, 0.1);;
 
     h1 {
       color: $gold;

@@ -18,7 +18,7 @@ angular.module('app', ['chart.js', 'firebase'])
         });
     }])
     .controller('testCtrl', ['$scope', 'Question', function ($scope, Question) {
-        var ref = new Firebase("https://intense-torch-1321.firebaseio.com/");
+        var ref = new Firebase('https://intense-torch-1321.firebaseio.com/');
         var testerRef = ref.child('apijit-test');
 
         $scope.testStarted = false;
@@ -163,7 +163,7 @@ angular.module('app', ['chart.js', 'firebase'])
                 result.type = '“อภิจิตระดับพิเศษ” (Special SuperSoul)';
                 result.description = 'คุณเป็นบุคคลที่หาได้ยาก สร้างสรรค์สิ่งใหม่ มีความมุ่งมั่นสูง ความเป็นผู้นำความโดดเด่นเพิ่มมากขึ้นอีก เป้าหมายชีวิตสูงมาก และบากบั่นอย่างหนักเพื่อความสัมฤทธิ์ผล ไม่ยอมพ่ายแพ้แก่อุปสรรคใดๆ';
             } else if (totalScore <= 100) {
-                result.type = '“อภิจิตระดับสุดยอด” (Transcendant SuperSoul)';
+                result.type = '“อภิจิตระดับเหนือมิติ” (Transcendant SuperSoul)';
                 result.description = 'คุณเป็นบุคคลที่หาได้ยากยิ่ง ที่ทำให้คนธรรมดาๆ คนหนึ่งกลายเป็นยอดคน มีสภาวะ SuperSoul ที่ทำให้กลายเป็น Superman มีจิตใจอันยิ่งใหญ่กว่าคนทั่วไปมาก ทำสิ่งที่เหลือเชื่อได้สำเร็จอย่างอัศจรรย์ สามารถพลิกวิกฤตได้ ช่วยเหลือผู้อื่นได้มากมาย เป็นผู้นำที่มีอิทธิพลทางจิตใจต่อคนอื่นๆ มากมาย ผู้คนให้ความรักและศรัทธาอย่างยิ่ง เป็นคนที่แม้วันที่จากไปแล้วก็ยังจะเป็นแรงบันดาลใจให้ผู้คน';
             }
             return result;

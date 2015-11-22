@@ -1,12 +1,12 @@
 .test-page {
   .test-heading {
-    padding-top: 60px;
-    padding-bottom: 20px;
+    padding: 100px 0;
     background: $gold url(/img/grid-pattern-gold.svg);
 
     h1 {
-      font-size: 48px;
+      font-size: 45px;
       color: white;
+      font-weight: 700;
     }
 
     p {
@@ -24,7 +24,7 @@
         background: $dark-gold;
         color: white;
       }
-      margin-bottom: 100px;
+      margin-bottom: 0;
     }
   }
   #radar {
@@ -137,6 +137,15 @@
       &[disabled] {
         background: #ccc;
       }
+    }
+  }
+
+  .description {
+    background: white;
+    padding: 20px 0 30px;
+    h1 {
+      color: $gold;
+      margin: 0;
     }
   }
 }
