@@ -20,6 +20,9 @@ angular.module('app', ['chart.js', 'firebase'])
     .controller('testCtrl', ['$scope', 'Question', '$window', function ($scope, Question, $window) {
         var ref = new Firebase('https://intense-torch-1321.firebaseio.com/');
         var testerRef = ref.child('apijit-test');
+        testerRef.on('value', function (snapshot) {
+            console.log(Object.keys(snapshot.val()).length);
+        });
         $scope.testStarted = false;
         $scope.test = 'SPI (Soul Performance Indicator) Test';
         $scope.score = {
