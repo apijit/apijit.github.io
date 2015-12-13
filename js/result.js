@@ -2,7 +2,12 @@ angular.module('app', ['chart.js', 'firebase'])
     .config(['ChartJsProvider', function (ChartJsProvider) {
         // Configure all charts
         ChartJsProvider.setOptions({
+            colours: ['#DFB53C'],
             responsive: true
+        });
+
+        ChartJsProvider.setOptions('Radar', {
+
         });
     }])
     .controller('resultCtrl', ['$scope', '$firebaseArray', function ($scope, $firebaseArray) {
