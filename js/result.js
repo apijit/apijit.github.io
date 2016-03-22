@@ -12,7 +12,7 @@ angular.module('app', ['chart.js', 'firebase'])
     }])
     .controller('resultCtrl', ['$scope', '$firebaseArray', function ($scope, $firebaseArray) {
         $scope.data = [
-            [89, 759, 538, 222, 46, 9, 5, 5, 0]
+            [195, 1569, 1129, 430, 91, 13, 7, 5, 0]
         ];
         $scope.labels = [
             'อปกติจิต',
@@ -37,19 +37,19 @@ angular.module('app', ['chart.js', 'firebase'])
             '“อภิจิตระดับพิเศษ” (Special SuperSoul)': 0,
             '“อภิจิตระดับเหนือมิติ” (Transcendant SuperSoul)': 0
         };
-        var results = [];
-        var keys = [];
-        ref.once('value', function (allSnapshot) {
-            allSnapshot.forEach(function (snapshot) {
-                var data = snapshot.val();
-                map[data.title]++;
-            });
-            for (var prop in map) {
-                results.push(map[prop]);
-            }
-            $scope.$apply(function () {
-                // $scope.data[0] = results;
-                console.log(results);
-            })
-        });
+        // var results = [];
+        // var keys = [];
+        // ref.once('value', function (allSnapshot) {
+        //     allSnapshot.forEach(function (snapshot) {
+        //         var data = snapshot.val();
+        //         map[data.title]++;
+        //     });
+        //     for (var prop in map) {
+        //         results.push(map[prop]);
+        //     }
+        //     $scope.$apply(function () {
+        //         // $scope.data[0] = results;
+        //         console.log(results);
+        //     })
+        // });
     }]);
