@@ -45,9 +45,6 @@ angular.module('app', ['chart.js', 'firebase'])
             question.answers = shuffleArray(question.answers);
             return question;
         });
-        $scope.progress = {
-            width: (($scope.currentQuestion + 1) / $scope.questions.length * 100) + '%'
-        };
         $scope.labels = ['ปัญญา', 'จรรยา', 'ปิติ', 'วินัย', 'พลัง', 'สัมฤทธิ์'];
         $scope.categoryTotal = {
             'wisdom': 0,
@@ -90,9 +87,6 @@ angular.module('app', ['chart.js', 'firebase'])
                 $scope.completed = true;
                 return;
             }
-            $scope.progress = {
-                width: (($scope.currentQuestion + 1) / $scope.questions.length * 100) + '%'
-            };
         };
 
         $scope.submitInfo = function (isValid) {

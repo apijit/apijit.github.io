@@ -64,6 +64,7 @@
     </div>
     <div class="text-center" ng-hide="testStarted">
       <p class="thai light">จิตมนุษย์เราแต่ละคนมีประสิทธิภาพไม่เท่ากัน ลองทำแบบทดสอบอภิจิต SuperSoul ดูว่า จิตของคุณมีประสิทธิภาพเพียงใด</p>
+      <p class="thai light helper">(ใช้เวลาประมาณ 10-15 นาที)</p>
       <button class="thai alt start-test" ng-click="startTest()">เริ่มต้นแบบทดสอบ</button>
     </div>
   </section>
@@ -79,14 +80,12 @@
         <a href="book.html" class="button thai learn-more" >สนใจเรียนรู้เพิ่มเติม</a>
         <button class="thai alt share" ng-click="share()">แชร์ผลใน Facebook</button>
       </div>
-      <div class="progress" ng-hide="finished || completed">
-        <div class="progress-bar" role="progressbar" valuemin="0" valuemax="100" ng-style="progress"></div>
-      </div>
       <div class="questions" ng-hide="finished || completed">
         <h1 class="thai">{{questions[currentQuestion].question}}</h1>
         <button ng-repeat="answer in questions[currentQuestion].answers" class="thai full-width alt" ng-click="submitQuestion(answer.value)">
           {{answer.text}}
         </button>
+        <div class="current light" ng-hide="finished || completed">{{currentQuestion + 1}} / {{questions.length}}</div>
       </div>
       <div class="subscribe" ng-show="completed">
         <form name="userForm" ng-submit="submitInfo(userForm.$valid)" novalidate>

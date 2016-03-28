@@ -1,21 +1,25 @@
 .test-page {
   .test-heading {
-    padding: 70px 0 30px;
+    padding: 80px 0 30px;
     background: $gold url(/img/grid-pattern-gold.svg);
 
     h1 {
       font-size: 45px;
       color: white;
       font-weight: 700;
+      margin-top: 10px;
     }
 
     p {
-      margin-top: 20px;
       color: white;
       font-size: 30px;
       max-width: 700px;
+      margin: 20px auto 20px;
+      padding: 0 20px;
+    }
+
+    .helper {
       margin: 0 auto 20px;
-      padding: 20px;
     }
 
     button {
@@ -28,7 +32,11 @@
     }
 
     @media screen and (max-width: 768px) {
-      padding: 60px 0 20px;
+      padding: 50px 0 0;
+
+      h1 {
+        font-size: 36px;
+      }
 
       button {
         margin-bottom: 40px;
@@ -42,24 +50,19 @@
     padding: 40px 0 80px;
     background: lighten($dark-gold, 50%);
 
-    .progress {
-      height: 2px;
-      border-radius: 0;
-
-      .progress-bar {
-        background-color: lighten($gold, 10%);
-        box-shadow: none;
-      }
+    @media screen and (max-width: 768px) {
+      padding: 20px 0 40px;
     }
 
-    .questions, .score, .progress {
+    .questions, .score, .current {
       max-width: 800px;
       margin: 0 auto;
       user-select: none;
 
       h1 {
+        font-size: 30px;
         color: $gold;
-        margin-top: 30px;
+        margin-top: 0;
         margin-bottom: 20px;
       }
 
@@ -67,6 +70,7 @@
         margin-bottom: 10px;
         padding: 7px 15px;
         transition: none;
+        font-size: 26px;
       }
 
       .next {
@@ -74,8 +78,11 @@
       }
     }
 
-    .progress {
-      margin-bottom: 20px;
+    .current {
+      text-align: right;
+      font-size: 20px;
+      color: $gold;
+      margin-top: 20px;
     }
 
     .score {
